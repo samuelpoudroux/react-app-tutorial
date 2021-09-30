@@ -4,5 +4,3 @@ export const getTasks = async () => {
     return res.json();
   }
 };
-
-export const formatHomeTitle = (title) => title?.replaceAll("-", " ");

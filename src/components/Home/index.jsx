@@ -1,7 +1,7 @@
 import React from "react";
-import HomeTitle from "../HomeTitle";
-import { FlexWrapper } from "../../../../Wrappers/FlexWrapper";
-import { LayoutWrapper } from "../../../../Wrappers/LayoutWrapper";
+import { FlexWrapper } from "../../Wrappers/FlexWrapper";
+import { LayoutWrapper } from "../../Wrappers/LayoutWrapper";
+import HomeTitle from "./components/HomeTitle";
 
 const Home = ({ children }) => {
   return (

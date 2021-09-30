@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { formatHomeTitle } from "../../services";
+import { formatHomeTitle } from "./services";
 
 const HomeTitle = () => {
   const { homeTitle } = useParams();

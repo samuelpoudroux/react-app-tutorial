@@ -3,22 +3,20 @@ import { Menu } from "antd";
 import {
   HomeOutlined,
   UnorderedListOutlined,
-  OrderedListOutlined
+  OrderedListOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const { SubMenu } = Menu;
 
 const CustomMenu = () => {
-  const [current, setCurrent] = useState("home");
+  const { pathname } = useLocation();
 
-  const handleClick = (e) => {
-    setCurrent(e.key);
-  };
+  console.log(pathname);
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Menu.Item key="home" icon={<HomeOutlined />}>
+    <Menu selectedKeys={[pathname]} mode="horizontal">
+      <Menu.Item key="/" icon={<HomeOutlined />}>
         <Link to="/">Home</Link>
       </Menu.Item>
       <SubMenu
@@ -26,22 +24,22 @@ const CustomMenu = () => {
         icon={<OrderedListOutlined />}
         title="Gestion des tâches"
       >
-        <Menu.Item key="taskListHome">
+        <Menu.Item key="/taskList/gestion-des-tâches">
           <Link to="/taskList/gestion-des-tâches">Accueil</Link>
         </Menu.Item>
-        <Menu.Item key="tasks">
+        <Menu.Item key="/taskList/information/list">
           <Link to="/taskList/information/list">Liste des tâches</Link>
         </Menu.Item>
       </SubMenu>
       <SubMenu
-        key="actionHistory"
+        key="/actionHistory/"
         icon={<UnorderedListOutlined />}
         title="Historique des actions"
       >
-        <Menu.Item key="actionHistoryHome">
+        <Menu.Item key="/actionHistory/historique-des-actions">
           <Link to="/actionHistory/historique-des-actions">Accueil</Link>
         </Menu.Item>
-        <Menu.Item key="actionHistoryList">
+        <Menu.Item key="/actionHistory/information/list">
           <Link to="/actionHistory/information/list">
             historique des actions
           </Link>
@@ -51,4 +49,4 @@ const CustomMenu = () => {
   );
 };
 
-export default memo(CustomMenu);
+export default CustomMenu;

@@ -3,9 +3,9 @@ import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 
 const BackButton = () => {
-  const history = useHistory();
+  const { goBack } = useHistory();
 
-  return <Button onClick={() => history.back()}>Retour</Button>;
+  return <Button onClick={() => goBack()}>Retour</Button>;
 };
 
 export default BackButton;
