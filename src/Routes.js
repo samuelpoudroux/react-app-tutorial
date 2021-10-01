@@ -1,19 +1,19 @@
 import Home from "./components/Home";
 import ActionHistory from "./features/ActionHistory";
-import TaskList from "./features/TaskList";
+import TodoList from "./features/TodoList";
 
 export const ROUTER = {
   HOME: {
     url: "",
-    component: Home,
-    exact: true
+    component: <Home isMainHome />,
+    exact: true,
   },
   TASK_LIST: {
-    url: "taskList",
-    component: TaskList
+    url: "todolist",
+    component: <TodoList />,
   },
   HISTORY_LIST: {
     url: "actionHistory",
-    component: ActionHistory
-  }
+    component: <ActionHistory />,
+  },
 };

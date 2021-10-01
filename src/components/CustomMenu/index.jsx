@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { memo } from "react";
 import { Menu } from "antd";
 import {
   HomeOutlined,
@@ -12,23 +12,21 @@ const { SubMenu } = Menu;
 const CustomMenu = () => {
   const { pathname } = useLocation();
 
-  console.log(pathname);
-
   return (
     <Menu selectedKeys={[pathname]} mode="horizontal">
       <Menu.Item key="/" icon={<HomeOutlined />}>
         <Link to="/">Home</Link>
       </Menu.Item>
       <SubMenu
-        key="taskList"
+        key="todolist"
         icon={<OrderedListOutlined />}
         title="Gestion des tâches"
       >
-        <Menu.Item key="/taskList/gestion-des-tâches">
-          <Link to="/taskList/gestion-des-tâches">Accueil</Link>
+        <Menu.Item key="/todolist/gestion-des-tâches">
+          <Link to="/todolist/gestion-des-tâches">Accueil</Link>
         </Menu.Item>
-        <Menu.Item key="/taskList/information/list">
-          <Link to="/taskList/information/list">Liste des tâches</Link>
+        <Menu.Item key="/todolist/information/tasks">
+          <Link to="/todolist/information/tasks">Liste des tâches</Link>
         </Menu.Item>
       </SubMenu>
       <SubMenu
@@ -39,8 +37,8 @@ const CustomMenu = () => {
         <Menu.Item key="/actionHistory/historique-des-actions">
           <Link to="/actionHistory/historique-des-actions">Accueil</Link>
         </Menu.Item>
-        <Menu.Item key="/actionHistory/information/list">
-          <Link to="/actionHistory/information/list">
+        <Menu.Item key="/actionHistory/information/tasks">
+          <Link to="/actionHistory/information/tasks">
             historique des actions
           </Link>
         </Menu.Item>
@@ -49,4 +47,4 @@ const CustomMenu = () => {
   );
 };
 
-export default CustomMenu;
+export default memo(CustomMenu);

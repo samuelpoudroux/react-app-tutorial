@@ -8,5 +8,5 @@ export const FlexWrapper = styled.div`
   align-items: ${({ alignItems }) => alignItems};
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
-  background: ${({ background }) => background};
+  flex-wrap: ${({ flexFlow }) => flexFlow || "wrap"};
 `;

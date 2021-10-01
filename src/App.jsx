@@ -18,9 +18,10 @@ export default function App() {
                 <Route
                   key={key}
                   path={`/${ROUTER[key].url}`}
-                  component={ROUTER[key].component}
                   exact={ROUTER[key].exact}
-                />
+                >
+                  {ROUTER[key].component}
+                </Route>
               );
             })}
           </Switch>

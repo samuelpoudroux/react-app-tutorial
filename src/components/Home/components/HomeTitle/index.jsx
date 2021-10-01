@@ -8,7 +8,7 @@ const HomeTitle = () => {
     <div>
       <h1>
         Bienvenu sur l'accueil de{" "}
-        {formatHomeTitle(homeTitle) || "notre application"}
+        {formatHomeTitle(homeTitle) || "notre application de build REACT-JS"}
       </h1>
     </div>
   );
