@@ -20,8 +20,7 @@ const ActionList = () => {
         <ul style={{ listStyle: "none" }}>
           {actions?.map((action) => (
             <li>
-              {action.actionType} pour la tâche "{action.name}"{" "}
-              {formatDate(action.date)}
+              {action.actionType} {action.name}" {formatDate(action.date)}
             </li>
           ))}
         </ul>

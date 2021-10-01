@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addActionToHistory } from "../../../../../ActionHistory/slice";
+import { ADD_TASK } from "../../../../../ActionHistory/slice/constants";
 import { addTask } from "../../../../slice";
 
 const useAddTaskForm = () => {
@@ -10,8 +12,13 @@ const useAddTaskForm = () => {
     console.log(errorInfo);
   };
   const onFinish = (values) => {
-    console.log(values);
     dispatch(addTask(values));
+    dispatch(
+      addActionToHistory({
+        actionType: ADD_TASK,
+        task: values,
+      })
+    );
   };
 
   return {

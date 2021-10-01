@@ -1,5 +1,5 @@
-export const ADD_TASK = "ADD_TASK";
-export const REMOVE_TASK = "REMOVE_TASK";
-export const ALTER_TASK = "ALTER_TASK";
-export const CHECK_TASK = "CHECK_TASK";
-export const UNCHECKED_TASK = "UNCHECKED_TASK";
+export const ADD_TASK = "Ajout de la tâche";
+export const REMOVE_TASK = "Suppression de la tâche";
+export const ALTER_TASK = "Modification de la tâche";
+export const CHECK_TASK = "Passage au status fait de la tâche";
+export const UNCHECKED_TASK = "Passage au status à faire de la tâche";

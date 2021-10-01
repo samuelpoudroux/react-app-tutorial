@@ -10,5 +10,6 @@ export const formatDate = (date) => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const day = date.getDate();
-  return `le ${day}/${month}/${year} à ${hours}h`;
+  const minutes = date.getMinutes();
+  return `le ${day}/${month}/${year} à ${hours}h${minutes}`;
 };

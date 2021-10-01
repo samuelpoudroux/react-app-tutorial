@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Avatar, Checkbox } from "antd";
+import { Card, Avatar, Switch } from "antd";
 import { MarginWrapper } from "../../../../../../Wrappers/MarginWrapper";
 import DeleteTask from "../DeleteTask";
 import { useDispatch } from "react-redux";
@@ -15,11 +15,11 @@ const { Meta } = Card;
 const TaskCard = ({ task, index }) => {
   const dispatch = useDispatch();
   const { id, name, isChecked, description } = task;
-  const handleChecked = (e) => {
-    dispatch(handleCheckedTask({ id, checked: e.target.checked }));
+  const handleSwitch = (checked) => {
+    dispatch(handleCheckedTask({ id, checked }));
     dispatch(
       addActionToHistory({
-        actionType: e.target.checked ? CHECK_TASK : UNCHECKED_TASK,
+        actionType: checked ? CHECK_TASK : UNCHECKED_TASK,
         task,
       })
     );
@@ -32,8 +32,8 @@ const TaskCard = ({ task, index }) => {
         style={{ width: 240 }}
         extra={
           <>
-            <DeleteTask id={id} />{" "}
-            <Checkbox defaultChecked={isChecked} onChange={handleChecked} />
+            <DeleteTask task={task} />{" "}
+            <Switch defaultChecked={isChecked} onChange={handleSwitch} />
           </>
         }
         title={`Tâche ${index + 1}: ${name}`}
