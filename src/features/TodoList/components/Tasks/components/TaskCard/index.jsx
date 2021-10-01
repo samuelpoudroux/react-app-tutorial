@@ -5,13 +5,25 @@ import DeleteTask from "../DeleteTask";
 import { useDispatch } from "react-redux";
 import { handleCheckedTask } from "../../../../slice";
 import PropTypes from "prop-types";
+import { addActionToHistory } from "../../../../../ActionHistory/slice";
+import {
+  CHECK_TASK,
+  UNCHECKED_TASK,
+} from "../../../../../ActionHistory/slice/constants";
 
 const { Meta } = Card;
 const TaskCard = ({ task, index }) => {
   const dispatch = useDispatch();
   const { id, name, isChecked, description } = task;
-  const handleChecked = (e) =>
+  const handleChecked = (e) => {
     dispatch(handleCheckedTask({ id, checked: e.target.checked }));
+    dispatch(
+      addActionToHistory({
+        actionType: e.target.checked ? CHECK_TASK : UNCHECKED_TASK,
+        task,
+      })
+    );
+  };
 
   return (
     <MarginWrapper global="10">
