@@ -1,25 +1,30 @@
 import React from "react";
-import { Card, Avatar } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Card, Avatar, Checkbox } from "antd";
 import { MarginWrapper } from "../../../../../../Wrappers/MarginWrapper";
+import DeleteTask from "../DeleteTask";
+import { useDispatch } from "react-redux";
+import { handleCheckedTask } from "../../../../slice";
+import PropTypes from "prop-types";
 
 const { Meta } = Card;
-
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { removeTask } from "../../../../slice";
-
-const TaskCard = ({ task }) => {
-  const { id, name, isChecked, description } = task;
+const TaskCard = ({ task, index }) => {
   const dispatch = useDispatch();
+  const { id, name, isChecked, description } = task;
+  const handleChecked = (e) =>
+    dispatch(handleCheckedTask({ id, checked: e.target.checked }));
 
   return (
     <MarginWrapper global="10">
       <Card
         hoverable
         style={{ width: 240 }}
-        extra={<DeleteOutlined onClick={() => dispatch(removeTask(id))} />}
-        title={`Tâche ${id + 1}: ${name}`}
+        extra={
+          <>
+            <DeleteTask id={id} />{" "}
+            <Checkbox defaultChecked={isChecked} onChange={handleChecked} />
+          </>
+        }
+        title={`Tâche ${index + 1}: ${name}`}
       >
         <Meta
           description={description}

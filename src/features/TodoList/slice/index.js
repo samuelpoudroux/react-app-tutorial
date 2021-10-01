@@ -1,6 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { getTasks } from "../services";
-import { getListWithNewElement, getListWithoutOldElement } from "./services";
+import {
+  getListWithNewElement,
+  getListWithoutOldElement,
+  getListWithNewCheckedElements,
+} from "./services";
 
 const todoListSlice = createSlice({
   name: "todoListSlice",
@@ -21,11 +25,21 @@ const todoListSlice = createSlice({
       return { ...state, error: true, isLoading: false };
     },
     removeTask: (state, action) => {
-      const data = getListWithoutOldElement(action.payload, state.data);
+      const data = getListWithoutOldElement(
+        action.payload,
+        current(state.data)
+      );
       return { ...state, data };
     },
     addTask: (state, action) => {
-      const data = getListWithNewElement(action.payload, state.data);
+      const data = getListWithNewElement(action.payload, current(state.data));
+      return { ...state, data };
+    },
+    handleCheckedTask: (state, action) => {
+      const data = getListWithNewCheckedElements(
+        action.payload,
+        current(state.data)
+      );
       return { ...state, data };
     },
   },
@@ -37,6 +51,7 @@ export const {
   getAllTasksError,
   removeTask,
   addTask,
+  handleCheckedTask,
 } = todoListSlice.actions;
 
 export const getTasksApi = () => async (dispatch) => {
