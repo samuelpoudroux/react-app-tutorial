@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Card, Avatar, Switch } from "antd";
 import { MarginWrapper } from "../../../../../../Wrappers/MarginWrapper";
 import DeleteTask from "../DeleteTask";
@@ -12,9 +12,10 @@ import {
 } from "../../../../../ActionHistory/slice/constants";
 
 const { Meta } = Card;
-const TaskCard = ({ task, index }) => {
+
+const TaskCard = ({ task }) => {
   const dispatch = useDispatch();
-  const { id, name, isChecked, description } = task;
+  const { id, name, isChecked, description, number } = task;
   const handleSwitch = (checked) => {
     dispatch(handleCheckedTask({ id, checked }));
     dispatch(
@@ -33,10 +34,10 @@ const TaskCard = ({ task, index }) => {
         extra={
           <>
             <DeleteTask task={task} />{" "}
-            <Switch defaultChecked={isChecked} onChange={handleSwitch} />
+            <Switch checked={isChecked} onChange={handleSwitch} />
           </>
         }
-        title={`Tâche ${index + 1}: ${name}`}
+        title={`Tâche ${number}: ${name}`}
       >
         <Meta
           description={description}
@@ -51,4 +52,4 @@ TaskCard.propTypes = {
   task: PropTypes.object,
 };
 
-export default TaskCard;
+export default memo(TaskCard);

@@ -1,5 +1,6 @@
-import ActionList from "./components/ActionList";
-import ActionListHome from "./components/Home";
+import React from "react";
+const ActionList = React.lazy(() => import("./components/ActionList"));
+const ActionListHome = React.lazy(() => import("./components/Home"));
 
 export const ACTION_HISTORY_ROUTER = {
   ACTION_HISTORY_HOME: {

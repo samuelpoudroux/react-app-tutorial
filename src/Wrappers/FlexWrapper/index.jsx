@@ -9,4 +9,5 @@ export const FlexWrapper = styled.div`
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
   flex-wrap: ${({ flexFlow }) => flexFlow || "wrap"};
+  background-color: ${({ background }) => background};
 `;

@@ -16,6 +16,7 @@ const AddTask = () => {
       justifyContent="center"
       alignItems="center"
       alignContent="center"
+      height="100vh"
     >
       <Title title="Ajouter une tâche" />
       <Tooltip placement="top" title={"ajouter une tâche"}>

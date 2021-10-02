@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { getTasks } from "../services";
 import {
   getListWithNewElement,
@@ -25,21 +25,15 @@ const todoListSlice = createSlice({
       return { ...state, error: true, isLoading: false };
     },
     removeTask: (state, action) => {
-      const data = getListWithoutOldElement(
-        action.payload,
-        current(state.data)
-      );
+      const data = getListWithoutOldElement(action.payload, state.data);
       return { ...state, data };
     },
     addTask: (state, action) => {
-      const data = getListWithNewElement(action.payload, current(state.data));
+      const data = getListWithNewElement(action.payload, state.data);
       return { ...state, data };
     },
     handleCheckedTask: (state, action) => {
-      const data = getListWithNewCheckedElements(
-        action.payload,
-        current(state.data)
-      );
+      const data = getListWithNewCheckedElements(action.payload, state.data);
       return { ...state, data };
     },
   },

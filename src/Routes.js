@@ -1,6 +1,8 @@
-import Home from "./components/Home";
-import ActionHistory from "./features/ActionHistory";
-import TodoList from "./features/TodoList";
+import React from "react";
+
+const Home = React.lazy(() => import("./components/Home"));
+const ActionHistory = React.lazy(() => import("./features/ActionHistory"));
+const TodoList = React.lazy(() => import("./features/TodoList"));
 
 export const ROUTER = {
   HOME: {

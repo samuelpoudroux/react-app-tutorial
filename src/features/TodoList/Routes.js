@@ -1,5 +1,7 @@
-import TaskListHome from "./components/Home";
-import Tasks from "./components/Tasks";
+import React from "react";
+
+const TaskListHome = React.lazy(() => import("./components/Home"));
+const Tasks = React.lazy(() => import("./components/Tasks"));
 
 export const TODO_LIST_ROUTER = {
   TASK_LIST_HOME: {
