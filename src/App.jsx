@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import CustomMenu from "./components/CustomMenu";
 import { ROUTER } from "./Routes.js";
 import "./styles.css";
+import Chat from "./components/Chat/index";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ export default function App() {
               })}
             </Switch>
           </Router>
+          <Chat />
         </QueryClientProvider>
       </Suspense>
     </div>
