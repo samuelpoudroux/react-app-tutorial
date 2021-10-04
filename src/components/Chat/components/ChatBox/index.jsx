@@ -1,48 +1,47 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
+import { UserContext } from "./../../../../contextes/UserContext";
+import { Form, Input, Button } from "antd";
+import Message from "./Message/index";
 
-const ChatBox = ({ messages, sendMessage }) => {
+const ChatBox = ({ messages, sendMessage, closeChat }) => {
+  const onFinish = (values) => {
+    console.log(values.message);
+    sendMessage(values.message);
+  };
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-4">
-          <div className="card">
-            <div className="card-body">
-              <div className="card-title">My first chat</div>
-              <hr />
-              <div className="messages">
-                {messages.map((msg, index) => {
-                  return (
-                    <div key={msg + index}>
-                      {msg.username}: {msg.text}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <form onSubmit={(e) => sendMessage(e)}>
-              <div className="card-footer">
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="Username"
-                  className="form-control"
-                />
-                <br />
-                <input
-                  id="text"
-                  type="text"
-                  placeholder="Your message"
-                  className="form-control"
-                />
-                <br />
-                <button type="submit" className="btn btn-primary form-control">
-                  send
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    <div style={{ maxHeight: "200px", overflow: "scroll" }}>
+      {messages.map((msg, index) => (
+        <Message key={index} msg={msg} />
+      ))}
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        autoComplete="off"
+      >
+        <Form.Item label="Message" name="message">
+          <Input />
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Envoyer
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

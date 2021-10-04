@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { socket } from "./../../../../../../socket";
+import { UserContext } from "./../../../../../../contextes/UserContext";
 
 const useChat = () => {
   const [messages, setMessages] = useState([]);
+  const { user } = useContext(UserContext);
 
   const setNewMessage = (msg) =>
     setMessages((oldMessage) => [...oldMessage, msg]);
 
-  const sendMessage = (e) => {
-    e.preventDefault();
+  const sendMessage = (message) => {
     const msg = {
-      username: e.target.username.value,
-      text: e.target.text.value,
+      user,
+      text: message,
     };
     socket.emit("CLIENT_MSG", msg);
   };

@@ -2,6 +2,7 @@ import React from "react";
 import { FlexWrapper } from "../../Wrappers/FlexWrapper";
 import { LayoutWrapper } from "../../Wrappers/LayoutWrapper";
 import HomeTitle from "./components/HomeTitle";
+import InformUser from "./../InformUser/index";
 
 const Home = ({ children, isMainHome }) => {
   return (
@@ -19,10 +20,13 @@ const Home = ({ children, isMainHome }) => {
           justifyContent="space-between"
           alignItems="center"
           height="25%"
-          width="30%"
+          width="50%"
         >
           {isMainHome ? (
-            <img src="/assets/kisspng-web-development-php-software-developer-programmer-computer-user-icon-svg-5ab0fde96b26b1.0935145915215487774389.png" />
+            <div>
+              <InformUser />
+              <img src="/assets/kisspng-web-development-php-software-developer-programmer-computer-user-icon-svg-5ab0fde96b26b1.0935145915215487774389.png" />
+            </div>
           ) : (
             children
           )}
