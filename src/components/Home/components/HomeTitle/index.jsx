@@ -7,7 +7,7 @@ const HomeTitle = () => {
   return (
     <div>
       <h1>
-        Bienvenu sur l'accueil de{" "}
+        Bienvenue sur l'accueil de{" "}
         {formatHomeTitle(homeTitle) || "notre application de build REACT-JS"}
       </h1>
     </div>

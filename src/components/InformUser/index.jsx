@@ -18,7 +18,7 @@ const InformUser = () => {
     <FlexWrapper direction="column">
       <h1>
         {user
-          ? `bienvenue ${user}`
+          ? `Bienvenue ${user}`
           : "Informez le nom de votre utilisateur pour le chat"}
       </h1>
       {!user && (
